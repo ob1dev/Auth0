@@ -35,5 +35,17 @@ namespace Auth0.Controllers
 
       await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
     }
+
+    [HttpGet]
+    [Authorize]
+    public IActionResult Profile()
+    {
+      return View(new UserProfileModel()
+      {
+        Name = User.Identity.Name,
+        EmailAddress = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value,
+        ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value
+      });
+    }
   }
 }

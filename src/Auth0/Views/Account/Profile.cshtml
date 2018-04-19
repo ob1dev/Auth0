@@ -1,0 +1,13 @@
+﻿@model Auth0.Models.UserProfileModel
+
+@{
+  ViewData["Title"] = "Profile";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<img class="img-rounded img-responsive" alt="@Model.Name" src="@Model.ProfileImage" />
+<h3>@Model.Name</h3>
+<p>
+  <i class="glyphicon glyphicon-envelope"></i> @Model.EmailAddress
+</p>
