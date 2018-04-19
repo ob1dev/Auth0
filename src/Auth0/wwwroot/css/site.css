@@ -33,3 +33,23 @@
         display: none;
     }
 }
+
+.avatar {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+.header-nav-current-user {
+  padding-bottom: 0px;
+  font-size: inherit;
+}
+
+
+.dropdown-divider {
+  height: 1px;
+  margin: 8px 1px;
+  background-color: #e1e4e8;
+}

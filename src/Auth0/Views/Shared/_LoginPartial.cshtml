@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Authentication
+@using Microsoft.Extensions.Options
+
+@using System.Security.Principal
+
+@if (User.Identity.IsAuthenticated)
+{
+  <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+      <a class="dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">
+        <img width="20" height="20" class="avatar" alt="@User.Identity.Name<" src="@User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value">
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="dropdown-header header-nav-current-user">Signed in as <strong>@User.Identity.Name</strong></li>
+        <li class="dropdown-divider" role="separator"></li>
+        <li><a asp-controller="Account" asp-action="Signout">Sign out</a></li>
+      </ul>
+    </li>
+  </ul>
+}
+else
+{
+  <ul class="nav navbar-nav navbar-right">
+    <li><a asp-controller="Account" asp-action="Signin">Sign in</a></li>
+  </ul>
+}
