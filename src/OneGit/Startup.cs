@@ -1,4 +1,4 @@
-﻿using Auth0.Data;
+﻿using OneGit.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Threading.Tasks;
 
-namespace Auth0
+namespace OneGit
 {
   public class Startup
   {

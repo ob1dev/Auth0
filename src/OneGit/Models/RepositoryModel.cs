@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Auth0
+namespace OneGit
 {
   public class RepositoryModel
   {

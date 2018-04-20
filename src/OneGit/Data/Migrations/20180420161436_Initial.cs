@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Auth0.Migrations
+namespace OneGit.Migrations
 {
     public partial class Initial : Migration
     {

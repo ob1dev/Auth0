@@ -1,4 +1,4 @@
-﻿namespace Auth0.Extensions
+﻿namespace OneGit.Extensions
 {
   public class Auth0Settings
   {

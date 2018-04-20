@@ -1,4 +1,4 @@
-﻿namespace Auth0.Models
+﻿namespace OneGit.Models
 {
   public class UserProfileModel
   {

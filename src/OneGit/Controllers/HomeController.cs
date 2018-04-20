@@ -1,12 +1,12 @@
-﻿using Auth0.Data;
-using Auth0.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OneGit.Data;
+using OneGit.Models;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Auth0.Controllers
+namespace OneGit.Controllers
 {
   public class HomeController : Controller
   {

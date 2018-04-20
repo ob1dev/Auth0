@@ -1,13 +1,12 @@
-﻿using Auth0.Models;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OneGit.Models;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Auth0.Controllers
+namespace OneGit.Controllers
 {
   [Route("[controller]/[action]")]
   public class AccountController : Controller

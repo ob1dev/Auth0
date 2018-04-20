@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Auth0.Data
+namespace OneGit.Data
 {
   public class AppDbContext : DbContext
   {
