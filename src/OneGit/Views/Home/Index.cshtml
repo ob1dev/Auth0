@@ -54,8 +54,14 @@
         </td>
         <td>
           <div class="btn-group" role="group" aria-label="Operations">
-            <a class="btn btn-default" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
-            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            @if (User.IsInRole("admin") || User.IsInRole("editor"))
+            {
+              <a class="btn btn-default" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+            }
+            @if (User.IsInRole("admin"))
+            { 
+              <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            }
           </div>
         </td>
       </tr>

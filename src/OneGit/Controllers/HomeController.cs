@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OneGit.Data;
 using OneGit.Models;
@@ -24,12 +25,14 @@ namespace OneGit.Controllers
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult New()
     {
       return View();
     }
 
     [HttpPost]
+    [Authorize]
     public IActionResult New(RepositoryModel repository)
     {
       if (!ModelState.IsValid)
@@ -44,6 +47,7 @@ namespace OneGit.Controllers
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Edit(Guid id)
     {
       var repository = await this.appContext.Repositories.FindAsync(id);
@@ -57,6 +61,7 @@ namespace OneGit.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Edit(RepositoryModel repository)
     {
       if (!ModelState.IsValid)
@@ -70,6 +75,7 @@ namespace OneGit.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> Delete(Guid id)
     {
       var repository = await this.appContext.Repositories.FindAsync(id);
