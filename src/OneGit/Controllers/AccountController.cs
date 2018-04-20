@@ -46,5 +46,10 @@ namespace OneGit.Controllers
         ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value
       });
     }
+
+    public IActionResult AccessDenied()
+    {
+      return View();
+    }
   }
 }
