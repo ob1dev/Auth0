@@ -16,10 +16,13 @@
 
 <div class="user-profile-repo-filter">
   <p>
-    <a class="btn btn-success" asp-action="New">
-      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-      New
-    </a>
+    @if (User.IsInRole("admin") || User.IsInRole("editor"))
+    {
+      <a class="btn btn-success" asp-action="New">
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        New
+      </a>
+    }
   </p>
 </div>
 
@@ -59,7 +62,7 @@
               <a class="btn btn-default" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
             }
             @if (User.IsInRole("admin"))
-            { 
+            {
               <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             }
           </div>

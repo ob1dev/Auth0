@@ -25,14 +25,14 @@ namespace OneGit.Controllers
     }
 
     [HttpGet]
-    [Authorize]
+    [Authorize(Roles = "admin, editor")]
     public IActionResult New()
     {
       return View();
     }
 
     [HttpPost]
-    [Authorize]
+    [Authorize(Roles = "admin, editor")]
     public IActionResult New(RepositoryModel repository)
     {
       if (!ModelState.IsValid)
@@ -47,7 +47,7 @@ namespace OneGit.Controllers
     }
 
     [HttpGet]
-    [Authorize]
+    [Authorize(Roles = "admin, editor")]
     public async Task<IActionResult> Edit(Guid id)
     {
       var repository = await this.appContext.Repositories.FindAsync(id);
@@ -61,7 +61,7 @@ namespace OneGit.Controllers
     }
 
     [HttpPost]
-    [Authorize]
+    [Authorize(Roles = "admin, editor")]
     public async Task<IActionResult> Edit(RepositoryModel repository)
     {
       if (!ModelState.IsValid)
