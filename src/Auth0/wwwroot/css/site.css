@@ -53,3 +53,12 @@
   margin: 8px 1px;
   background-color: #e1e4e8;
 }
+
+.user-profile-repo-filter {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+.nav-tabs > li {
+  margin-bottom: -2px !important;
+}
