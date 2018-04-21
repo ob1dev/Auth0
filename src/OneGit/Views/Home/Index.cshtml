@@ -47,7 +47,14 @@
           <a href="@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Name)</a>
         </td>
         <td>
-          @Html.DisplayFor(modelItem => item.Description)
+          @if (!string.IsNullOrWhiteSpace(item.Description))
+          {
+            Html.DisplayFor(modelItem => item.Description);
+          }
+          else
+          {
+            <em class="text-muted">No description provided.</em>
+          }
         </td>
         <td>
           <div class="btn-group" role="group" aria-label="Operations">
