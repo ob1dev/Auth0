@@ -7,6 +7,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
+
 namespace OneGit.Controllers
 {
   public class HomeController : Controller
@@ -33,7 +34,7 @@ namespace OneGit.Controllers
 
     [HttpPost]
     [Authorize(Roles = "admin, editor")]
-    public IActionResult New(RepositoryModel repository)
+    public async Task<IActionResult> New(RepositoryModel repository)
     {
       if (!ModelState.IsValid)
       {
@@ -41,7 +42,16 @@ namespace OneGit.Controllers
       }
 
       this.appContext.Add(repository);
-      this.appContext.SaveChangesAsync();
+
+      try
+      {
+        await this.appContext.SaveChangesAsync();
+      }
+      catch (Exception ex)
+      {
+        ViewData["Alert"] = ex.Message;
+        return View();
+      }
 
       return RedirectToAction("Index");
     }
@@ -69,8 +79,16 @@ namespace OneGit.Controllers
         return View();
       }
 
-      this.appContext.Attach(repository).State = EntityState.Modified;
-      await this.appContext.SaveChangesAsync();
+      try
+      {
+        this.appContext.Attach(repository).State = EntityState.Modified;
+        await this.appContext.SaveChangesAsync();
+      }
+      catch (Exception ex)
+      {
+        ViewData["Alert"] = ex.Message;
+        return View();
+      }
 
       return RedirectToAction("Index");
     }

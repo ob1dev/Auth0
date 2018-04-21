@@ -8,6 +8,14 @@
 <h4>Repository</h4>
 <hr />
 
+@if (ViewData["Alert"] != null)
+{
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Oh snap!</strong> @ViewData["Alert"]
+  </div>
+}
+
 <div class="row">
   <div class="col-md-4">
     <form asp-action="Edit">
