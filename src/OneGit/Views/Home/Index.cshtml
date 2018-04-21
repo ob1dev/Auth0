@@ -35,9 +35,6 @@
       <th>
         @Html.DisplayNameFor(model => model.Description)
       </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Url)
-      </th>
       <th></th>
     </tr>
   </thead>
@@ -47,13 +44,10 @@
     {
       <tr>
         <td>
-          @Html.DisplayFor(modelItem => item.Name)
+          <a href="@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Name)</a>
         </td>
         <td>
           @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-          <a href="@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Url)</a>
         </td>
         <td>
           <div class="btn-group" role="group" aria-label="Operations">
