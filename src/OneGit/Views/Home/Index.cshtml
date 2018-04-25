@@ -5,71 +5,105 @@
 }
 
 <h2></h2>
+@if (!User.Identity.IsAuthenticated)
+{
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Please log in to get started</h2>
+      <h3>You can use one of the following users:</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p>User with <mark>Read Data</mark> access right:</p>
+      <ul>
+        <li>Login: <code>viewer@olegburov.com</code></li>
+        <li>Password: <code>Viewer2User</code></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <p>User with <mark>Write Data</mark> access right:</p>
+      <ul>
+        <li>Login: <code>editor@olegburov.com</code></li>
+        <li>Password: <code>Editor2User</code></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <p>User with <mark>Delete Data</mark> access right:</p>
+      <ul>
+        <li>Login: <code>admin@olegburov.com</code></li>
+        <li>Password: <code>Admin2User</code></li>
+      </ul>
+    </div>
+  </div>
+}
+else
+{
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="#">Overview</a></li>
+    <li role="presentation" class="active"><a href="#">Repositories <span class="badge">@Model.Count()</span></a></li>
+    <li role="presentation"><a href="#">Stars</a></li>
+    <li role="presentation"><a href="#">Followers</a></li>
+    <li role="presentation"><a href="#">Following</a></li>
+  </ul>
 
-<ul class="nav nav-tabs">
-  <li role="presentation"><a href="#">Overview</a></li>
-  <li role="presentation" class="active"><a href="#">Repositories <span class="badge">@Model.Count()</span></a></li>
-  <li role="presentation"><a href="#">Stars</a></li>
-  <li role="presentation"><a href="#">Followers</a></li>
-  <li role="presentation"><a href="#">Following</a></li>
-</ul>
+  <div class="user-profile-repo-filter">
+    <p>
+      @if (User.IsInRole("admin") || User.IsInRole("editor"))
+      {
+        <a class="btn btn-success" asp-action="New">
+          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+          New
+        </a>
+      }
+    </p>
+  </div>
 
-<div class="user-profile-repo-filter">
-  <p>
-    @if (User.IsInRole("admin") || User.IsInRole("editor"))
-    {
-      <a class="btn btn-success" asp-action="New">
-        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-        New
-      </a>
-    }
-  </p>
-</div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>
-        @Html.DisplayNameFor(model => model.Name)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Description)
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-
-    @foreach (var item in Model)
-    {
+  <table class="table">
+    <thead>
       <tr>
-        <td>
-          <a href="@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Name)</a>
-        </td>
-        <td>
-          @if (!string.IsNullOrWhiteSpace(item.Description))
-          {
-            Html.DisplayFor(modelItem => item.Description);
-          }
-          else
-          {
-            <em class="text-muted">No description provided.</em>
-          }
-        </td>
-        <td>
-          <div class="btn-group" role="group" aria-label="Operations">
-            @if (User.IsInRole("admin") || User.IsInRole("editor"))
-            {
-              <a class="btn btn-default" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
-            }
-            @if (User.IsInRole("admin"))
-            {
-              <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            }
-          </div>
-        </td>
+        <th>
+          @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
       </tr>
+    </thead>
+    <tbody>
 
-    }
-  </tbody>
-</table>
+      @foreach (var item in Model)
+      {
+        <tr>
+          <td>
+            <a href="@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Name)</a>
+          </td>
+          <td>
+            @if (!string.IsNullOrWhiteSpace(item.Description))
+            {
+              Html.DisplayFor(modelItem => item.Description);
+            }
+            else
+            {
+              <em class="text-muted">No description provided.</em>
+            }
+          </td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Operations">
+              @if (User.IsInRole("admin") || User.IsInRole("editor"))
+              {
+                <a class="btn btn-default" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+              }
+              @if (User.IsInRole("admin"))
+              {
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+              }
+            </div>
+          </td>
+        </tr>
+
+      }
+    </tbody>
+  </table>
+}
