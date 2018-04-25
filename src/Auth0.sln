@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneGit", "OneGit\OneGit.csproj", "{E70F2910-44D3-4A7A-BAB0-EEB46D063E62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneGit.Api", "OneGit.Api\OneGit.Api.csproj", "{9C7AE68D-03F1-4D84-95D9-35887E2CF700}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E70F2910-44D3-4A7A-BAB0-EEB46D063E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E70F2910-44D3-4A7A-BAB0-EEB46D063E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E70F2910-44D3-4A7A-BAB0-EEB46D063E62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7AE68D-03F1-4D84-95D9-35887E2CF700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7AE68D-03F1-4D84-95D9-35887E2CF700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7AE68D-03F1-4D84-95D9-35887E2CF700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7AE68D-03F1-4D84-95D9-35887E2CF700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
