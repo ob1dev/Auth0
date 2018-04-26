@@ -24,6 +24,7 @@ namespace OneGit.Api.Controllers
 
     // GET api/repository
     [HttpGet]    
+    [Authorize("read:repositories")]
     public async Task<IEnumerable<RepositoryModel>> Get()
     {
       return await this.context.Repositories.AsNoTracking().ToListAsync();
@@ -32,6 +33,7 @@ namespace OneGit.Api.Controllers
     // GET api/repository/12345678-90ab-cdef-1234-567890abcdef
     [HttpGet("{id}")]
     [HttpGet("{id}", Name = "GetRepository")]
+    [Authorize("read:repositories")]
     public IActionResult Get(Guid id)
     {
       var item = this.context.Repositories.FirstOrDefault(repository => repository.Id == id);
@@ -45,6 +47,7 @@ namespace OneGit.Api.Controllers
 
     // POST api/repository
     [HttpPost]
+    [Authorize("create:repositories")]
     public IActionResult Post([FromBody] RepositoryModel repository)
     {
       if (repository == null)
@@ -69,6 +72,7 @@ namespace OneGit.Api.Controllers
 
     // PUT api/repository/12345678-90ab-cdef-1234-567890abcdef
     [HttpPut("{id}")]
+    [Authorize("update:repositories")]
     public async Task<IActionResult> Put(Guid id, [FromBody] RepositoryModel repository)
     {
       if (repository == null || repository.Id != id)
@@ -91,6 +95,7 @@ namespace OneGit.Api.Controllers
 
     // DELETE api/repository/12345678-90ab-cdef-1234-567890abcdef
     [HttpDelete("{id}")]
+    [Authorize("delete:repositories")]
     public async Task<IActionResult> Delete(Guid id)
     {
       var repository = await this.context.Repositories.FindAsync(id);
