@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 namespace OneGit.Api.Controllers
 {
   [Route("api/[controller]")]
-  public class RepositoryController : Controller
+  public class RepositoriesController : Controller
   {
-    private ILogger<RepositoryController> logger;
+    private ILogger<RepositoriesController> logger;
     private readonly RepositoryDbContext context;
 
-    public RepositoryController(ILogger<RepositoryController> logger, RepositoryDbContext context)
+    public RepositoriesController(ILogger<RepositoriesController> logger, RepositoryDbContext context)
     {
       this.logger = logger;
       this.context = context;
     }
 
-    // GET api/repository
+    // GET api/repositories
     [HttpGet]    
     [Authorize("read:repositories")]
     public async Task<IEnumerable<RepositoryModel>> Get()
@@ -29,7 +29,7 @@ namespace OneGit.Api.Controllers
       return await this.context.Repositories.AsNoTracking().ToListAsync();
     }
 
-    // GET api/repository/12345678-90ab-cdef-1234-567890abcdef
+    // GET api/repositories/12345678-90ab-cdef-1234-567890abcdef
     [HttpGet("{id}", Name = "GetRepository")]
     [Authorize("read:repositories")]
     public IActionResult Get(Guid id)
@@ -43,7 +43,7 @@ namespace OneGit.Api.Controllers
       return new ObjectResult(repository);
     }
 
-    // POST api/repository
+    // POST api/repositories
     [HttpPost]
     [Authorize("create:repositories")]
     public IActionResult Post([FromBody] RepositoryModel repository)
@@ -68,7 +68,7 @@ namespace OneGit.Api.Controllers
 
     }
 
-    // PUT api/repository/12345678-90ab-cdef-1234-567890abcdef
+    // PUT api/repositories/12345678-90ab-cdef-1234-567890abcdef
     [HttpPut("{id}")]
     [Authorize("update:repositories")]
     public async Task<IActionResult> Put(Guid id, [FromBody] RepositoryModel repository)
@@ -91,7 +91,7 @@ namespace OneGit.Api.Controllers
       return new NoContentResult();
     }
 
-    // DELETE api/repository/12345678-90ab-cdef-1234-567890abcdef
+    // DELETE api/repositories/12345678-90ab-cdef-1234-567890abcdef
     [HttpDelete("{id}")]
     [Authorize("delete:repositories")]
     public async Task<IActionResult> Delete(Guid id)
