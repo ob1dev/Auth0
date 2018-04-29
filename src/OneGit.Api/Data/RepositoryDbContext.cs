@@ -2,9 +2,9 @@
 
 namespace OneGit.Api.Data
 {
-  public class RepositoryDbContext : DbContext
+  public class RepositoryContext : DbContext
   {
-    public RepositoryDbContext(DbContextOptions options) : base(options)
+    public RepositoryContext(DbContextOptions options) : base(options)
     {
     }
 

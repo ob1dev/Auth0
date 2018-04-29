@@ -13,9 +13,9 @@ namespace OneGit.Api.Controllers
   public class RepositoriesController : Controller
   {
     private ILogger<RepositoriesController> logger;
-    private readonly RepositoryDbContext context;
+    private readonly RepositoryContext context;
 
-    public RepositoriesController(ILogger<RepositoriesController> logger, RepositoryDbContext context)
+    public RepositoriesController(ILogger<RepositoriesController> logger, RepositoryContext context)
     {
       this.logger = logger;
       this.context = context;

@@ -10,7 +10,7 @@ using System;
 
 namespace OneGit.Api.Migrations
 {
-    [DbContext(typeof(RepositoryDbContext))]
+    [DbContext(typeof(RepositoryContext))]
     [Migration("20180420161436_Initial")]
     partial class Initial
     {
