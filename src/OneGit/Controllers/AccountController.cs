@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OneGit.Models;
+using OneGit.Web.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OneGit.Controllers
+namespace OneGit.Web.Controllers
 {
   [Route("[controller]/[action]")]
   public class AccountController : Controller

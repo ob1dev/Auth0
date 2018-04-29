@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OneGit.Data;
-using OneGit.Models;
+using OneGit.Web.Models;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
 
-namespace OneGit.Controllers
+namespace OneGit.Web.Controllers
 {
   public class HomeController : Controller
   {

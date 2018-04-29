@@ -11,7 +11,7 @@ using OneGit.Web.Services;
 using System;
 using System.Threading.Tasks;
 
-namespace OneGit
+namespace OneGit.Web
 {
   public class Startup
   {

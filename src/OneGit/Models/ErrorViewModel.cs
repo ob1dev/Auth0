@@ -1,4 +1,4 @@
-namespace OneGit.Models
+namespace OneGit.Web.Models
 {
   public class ErrorViewModel
   {
