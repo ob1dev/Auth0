@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using OneGit.Api.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace OneGit.Api.Controllers
@@ -31,18 +30,17 @@ namespace OneGit.Api.Controllers
     }
 
     // GET api/repository/12345678-90ab-cdef-1234-567890abcdef
-    [HttpGet("{id}")]
     [HttpGet("{id}", Name = "GetRepository")]
     [Authorize("read:repositories")]
     public IActionResult Get(Guid id)
     {
-      var item = this.context.Repositories.FirstOrDefault(repository => repository.Id == id);
-      if (item == null)
+      var repository = this.context.Repositories.Find(id);
+      if (repository == null)
       {
         return NotFound();
       }
 
-      return new ObjectResult(item);
+      return new ObjectResult(repository);
     }
 
     // POST api/repository
