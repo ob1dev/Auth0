@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneGit", "OneGit\OneGit.csproj", "{E70F2910-44D3-4A7A-BAB0-EEB46D063E62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneGit.Web", "OneGit.Web\OneGit.Web.csproj", "{E70F2910-44D3-4A7A-BAB0-EEB46D063E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneGit.Api", "OneGit.Api\OneGit.Api.csproj", "{9C7AE68D-03F1-4D84-95D9-35887E2CF700}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneGit.Api", "OneGit.Api\OneGit.Api.csproj", "{9C7AE68D-03F1-4D84-95D9-35887E2CF700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
