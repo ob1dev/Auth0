@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,7 @@ namespace OneGit.Api
       services.AddDbContext<RepositoryDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-      services.AddMvc();
+      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
       // 1. Add Authentication Services
       string domain = $"https://{Configuration["Auth0:Domain"]}/";
@@ -59,10 +60,15 @@ namespace OneGit.Api
       {
         app.UseDeveloperExceptionPage();
       }
+      else
+      {
+        app.UseHsts();
+      }
 
       // 2. Enable authentication middleware
       app.UseAuthentication();
 
+      app.UseHttpsRedirection();
       app.UseMvc();
     }
   }
