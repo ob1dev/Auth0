@@ -82,7 +82,7 @@ else
           <td>
             @if (!string.IsNullOrWhiteSpace(item.Description))
             {
-              Html.DisplayFor(modelItem => item.Description);
+              @Html.DisplayFor(modelItem => item.Description);
             }
             else
             {
