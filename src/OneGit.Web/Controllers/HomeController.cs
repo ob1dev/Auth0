@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using OneGit.Data;
 using OneGit.Web.Models;
+using OneGit.Web.Services;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -12,17 +12,23 @@ namespace OneGit.Web.Controllers
 {
   public class HomeController : Controller
   {
-    private readonly AppDbContext appContext;
+    private RepositoryClient repositoryClient;
 
-    public HomeController(AppDbContext context)
+    public HomeController(RepositoryClient client)
     {
-      this.appContext = context;
+      this.repositoryClient = client;
     }
 
     public async Task<IActionResult> Index()
     {
-      var repositoriesList = await this.appContext.Repositories.AsNoTracking().ToListAsync();
-      return View(repositoriesList);
+      var repositories = Enumerable.Empty<RepositoryModel>();
+
+      if (User.Identity.IsAuthenticated)
+      {
+        repositories = await this.repositoryClient.GetAllRepositoriesAsync();
+      }
+
+      return View(repositories);
     }
 
     [HttpGet]
@@ -41,17 +47,7 @@ namespace OneGit.Web.Controllers
         return View();
       }
 
-      this.appContext.Add(repository);
-
-      try
-      {
-        await this.appContext.SaveChangesAsync();
-      }
-      catch (Exception ex)
-      {
-        ViewData["Alert"] = ex.Message;
-        return View();
-      }
+      await this.repositoryClient.CreateNewRepository(repository);
 
       return RedirectToAction("Index");
     }
@@ -60,13 +56,13 @@ namespace OneGit.Web.Controllers
     [Authorize(Roles = "admin, editor")]
     public async Task<IActionResult> Edit(Guid id)
     {
-      var repository = await this.appContext.Repositories.FindAsync(id);
+      var repository = await this.repositoryClient.GetRepository(id);
 
       if (repository == null)
       {
         return RedirectToAction("Index");
       }
-      
+
       return View(repository);
     }
 
@@ -79,16 +75,7 @@ namespace OneGit.Web.Controllers
         return View();
       }
 
-      try
-      {
-        this.appContext.Attach(repository).State = EntityState.Modified;
-        await this.appContext.SaveChangesAsync();
-      }
-      catch (Exception ex)
-      {
-        ViewData["Alert"] = ex.Message;
-        return View();
-      }
+      await this.repositoryClient.UpdateRepository(repository);
 
       return RedirectToAction("Index");
     }
@@ -96,13 +83,7 @@ namespace OneGit.Web.Controllers
     [Authorize(Roles = "admin")]
     public async Task<IActionResult> Delete(Guid id)
     {
-      var repository = await this.appContext.Repositories.FindAsync(id);
-
-      if (repository != null)
-      {
-        this.appContext.Remove(repository);
-        await this.appContext.SaveChangesAsync();
-      }
+      await this.repositoryClient.DeleteRepository(id);
 
       return RedirectToAction("Index");
     }
