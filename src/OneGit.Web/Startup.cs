@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using OneGit.Web.Services;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OneGit.Web
@@ -57,10 +58,9 @@ namespace OneGit.Web
         options.Scope.Add("openid");
         options.Scope.Add("profile");
         options.Scope.Add("email");
-        options.Scope.Add("read:repositories");
-        options.Scope.Add("create:repositories");
-        options.Scope.Add("update:repositories");
-        options.Scope.Add("delete:repositories");
+
+        var apiScopes = string.Join(" ", Configuration.GetSection("Auth0:ApiScopes").GetChildren().Select(s => s.Value));
+        options.Scope.Add(apiScopes);
 
         // Set the correct name claim type
         options.TokenValidationParameters = new TokenValidationParameters
