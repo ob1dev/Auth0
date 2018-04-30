@@ -57,6 +57,10 @@ namespace OneGit.Web
         options.Scope.Add("openid");
         options.Scope.Add("profile");
         options.Scope.Add("email");
+        options.Scope.Add("read:repositories");
+        options.Scope.Add("create:repositories");
+        options.Scope.Add("update:repositories");
+        options.Scope.Add("delete:repositories");
 
         // Set the correct name claim type
         options.TokenValidationParameters = new TokenValidationParameters
@@ -100,6 +104,14 @@ namespace OneGit.Web
 
               return Task.CompletedTask;
             }
+            },
+
+          OnRedirectToIdentityProvider = context =>
+          {
+            context.ProtocolMessage.SetParameter("audience", Configuration["Auth0:ApiIdentifier"]);
+
+            return Task.FromResult(0);
+          }
         };
       });
 
