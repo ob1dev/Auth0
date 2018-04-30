@@ -47,7 +47,7 @@ namespace OneGit.Web.Controllers
         return View();
       }
 
-      await this.repositoryClient.CreateNewRepository(repository);
+      await this.repositoryClient.CreateNewRepositoryAsync(repository);
 
       return RedirectToAction("Index");
     }
@@ -56,7 +56,7 @@ namespace OneGit.Web.Controllers
     [Authorize(Roles = "admin, editor")]
     public async Task<IActionResult> Edit(Guid id)
     {
-      var repository = await this.repositoryClient.GetRepository(id);
+      var repository = await this.repositoryClient.GetRepositoryAsync(id);
 
       if (repository == null)
       {
@@ -75,7 +75,7 @@ namespace OneGit.Web.Controllers
         return View();
       }
 
-      await this.repositoryClient.UpdateRepository(repository);
+      await this.repositoryClient.UpdateRepositoryAsync(repository);
 
       return RedirectToAction("Index");
     }
@@ -83,7 +83,7 @@ namespace OneGit.Web.Controllers
     [Authorize(Roles = "admin")]
     public async Task<IActionResult> Delete(Guid id)
     {
-      await this.repositoryClient.DeleteRepository(id);
+      await this.repositoryClient.DeleteRepositoryAsync(id);
 
       return RedirectToAction("Index");
     }

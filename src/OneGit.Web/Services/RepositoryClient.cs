@@ -47,7 +47,7 @@ namespace OneGit.Web.Services
       }
     }
 
-    public async Task<RepositoryModel> GetRepository(Guid id)
+    public async Task<RepositoryModel> GetRepositoryAsync(Guid id)
     {
       try
       {
@@ -63,7 +63,7 @@ namespace OneGit.Web.Services
       }
     }
 
-    public async Task CreateNewRepository(RepositoryModel repository)
+    public async Task CreateNewRepositoryAsync(RepositoryModel repository)
     {
       try
       {
@@ -79,7 +79,7 @@ namespace OneGit.Web.Services
       }
     }
 
-    public async Task UpdateRepository(RepositoryModel repository)
+    public async Task UpdateRepositoryAsync(RepositoryModel repository)
     {
       try
       {
@@ -95,7 +95,7 @@ namespace OneGit.Web.Services
       }
     }
 
-    public async Task DeleteRepository(Guid id)
+    public async Task DeleteRepositoryAsync(Guid id)
     {
       try
       {
