@@ -1,5 +1,7 @@
 # Auth0-Coding-Project
 
+[![Build Status](https://travis-ci.org/olegburov/Auth0.svg?branch=master)](https://travis-ci.org/olegburov/Auth0)
+
 ## Problem Overview
 
 Auth0 allows customers to create tokens to protect their own APIs (https://auth0.com/docs/api-auth) using standard OAuth2 flows. As part of the configuration Auth0 allows to define a know lists of scopes available for APIs that might be used to display consent forms and it allows developers to modify the scopes that will be included in the resulting tokens. 
