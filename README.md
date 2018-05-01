@@ -151,7 +151,8 @@ Please share the code on GitHub and make sure the README file is clean and clear
          "url": "https://github.com/github/"
        }
      ]
-
+     ```
+     
      The scope `update:repositories` is required for service requests.
 
      #### Request Headers
@@ -168,7 +169,8 @@ Please share the code on GitHub and make sure the README file is clean and clear
          "url": "https://github.com/dotnet/"
        }
      ]
-
+     ```
+     
    - The **Delete Repository** operation removes an repository from database.
    
      `DELETE https://{base-url}/api/repositories/{repository-guid}`
