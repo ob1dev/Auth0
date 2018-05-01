@@ -1,4 +1,4 @@
-# Auth0-Coding-Project
+# Auth0 Coding Project
 
 [![Build Status](https://travis-ci.org/olegburov/Auth0.svg?branch=master)](https://travis-ci.org/olegburov/Auth0)
 
