@@ -7,5 +7,9 @@
     public string Name { get; set; }
 
     public string ProfileImage { get; set; }
+
+    public string IdToken { get; set; }
+
+    public string AccessToken { get; set; }
   }
 }

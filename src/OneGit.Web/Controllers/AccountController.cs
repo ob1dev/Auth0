@@ -37,14 +37,16 @@ namespace OneGit.Web.Controllers
 
     [HttpGet]
     [Authorize]
-    public IActionResult Profile()
+    public async Task<IActionResult> Profile()
     {
       return View(new UserProfileModel()
       {
         Name = User.Identity.Name,
         EmailAddress = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value,
-        ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value
-      });
+        ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value,
+        IdToken = await HttpContext.GetTokenAsync("id_token"),
+        AccessToken = await HttpContext.GetTokenAsync("access_token")
+    });
     }
 
     public IActionResult AccessDenied()

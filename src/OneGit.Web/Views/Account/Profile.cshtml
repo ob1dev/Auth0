@@ -8,5 +8,17 @@
 <img class="img-rounded img-responsive" alt="@Model.Name" src="@Model.ProfileImage" />
 <h3>@Model.Name</h3>
 <p>
-  <i class="glyphicon glyphicon-envelope"></i> @Model.EmailAddress
+  <i class="glyphicon glyphicon-envelope"></i> <code>@Model.EmailAddress</code>
+</p>
+<p>
+  <i class="glyphicon glyphicon-user"></i> <code>id_token</code>
+  <div>
+    <mark>@Model.IdToken</mark>
+  </div>
+</p>
+<p>
+  <i class="glyphicon glyphicon-lock"></i> <code>access_token</code>
+  <div>
+    <mark>@Model.AccessToken</mark>
+  </div>
 </p>
