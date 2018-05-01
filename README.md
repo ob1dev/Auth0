@@ -142,6 +142,15 @@ Please share the code on GitHub and make sure the README file is clean and clear
      `PUT https://{base-url}/api/repositories/{repository-guid}`
 
      #### Request
+     
+     ``` json
+     [
+       {
+         "name": "GitHub",
+         "description": "GitHub is a development platform inspired by the way you work.",
+         "url": "https://github.com/github/"
+       }
+     ]
 
      The scope `update:repositories` is required for service requests.
 
@@ -150,6 +159,15 @@ Please share the code on GitHub and make sure the README file is clean and clear
      `Authorization: Bearer {access_token}`
 
      #### Request Body
+     
+     ``` json
+     [
+       {
+         "name": "DotNet",
+         "description": "Free. Cross-platform. Open source. A developer platform for building apps.",
+         "url": "https://github.com/dotnet/"
+       }
+     ]
 
    - The **Delete Repository** operation removes an repository from database.
    
