@@ -95,98 +95,22 @@ Please share the code on GitHub and make sure the README file is clean and clear
 
 7. The WebAPI provides the following endpoints where each requres a specific scope to be executed:
 
-   - The **List Repositories** operation returns a list of the repositories currently in a database.
+   - The **List Repositories** operation returns a list of the repositories currently in a database. The scope `read:repositories` is required for service requests.
 
      `GET https://{base-url}/api/repositories`
-
-     #### Request
-     
-     The scope `read:repositories` is required for service requests.
-
-     #### Request Headers
-
-     `Authorization: Bearer {access_token}`
-
-     #### Request Body
   
-     None.
-  
-   - The **Get Repository** operation gets a repository from a database.
+   - The **Get Repository** operation gets a repository from a database. The scope `read:repositories` is required for service requests.
    
      `GET https://{base-url}/api/repositories/{repository-guid}`
 
-     #### Request
-
-     The scope `read:repositories` is required for service requests.
-
-     #### Request Headers
-
-     `Authorization: Bearer {access_token}`
-
-     #### Request Body
-
-     None.
-
-   - The **Create Repository** operation creates a new repository in a database.
+   - The **Create Repository** operation creates a new repository in a database. The scope `create:repositories` is required for service requests.
    
      `POST https://{base-url}/api/repositories`
 
-     #### Request
-
-     The scope `create:repositories` is required for service requests.
-
-     #### Request Headers
-
-     `Authorization: Bearer {access_token}`
-
-     #### Request Body
-
-   - The **Update Repository** operation updates an existent repository to the new one.
+   - The **Update Repository** operation updates an existent repository to the new one. The scope `update:repositories` is required for service requests.
    
      `PUT https://{base-url}/api/repositories/{repository-guid}`
-
-     #### Request
      
-     ``` json
-     [
-       {
-         "name": "GitHub",
-         "description": "GitHub is a development platform inspired by the way you work.",
-         "url": "https://github.com/github/"
-       }
-     ]
-     ```
-     
-     The scope `update:repositories` is required for service requests.
-
-     #### Request Headers
-
-     `Authorization: Bearer {access_token}`
-
-     #### Request Body
-     
-     ``` json
-     [
-       {
-         "name": "DotNet",
-         "description": "Free. Cross-platform. Open source. A developer platform for building apps.",
-         "url": "https://github.com/dotnet/"
-       }
-     ]
-     ```
-     
-   - The **Delete Repository** operation removes an repository from database.
+   - The **Delete Repository** operation removes an repository from database. The scope `delete:repositories` is required for service requests.
    
      `DELETE https://{base-url}/api/repositories/{repository-guid}`
-
-     #### Request
-
-     The scope `delete:repositories` is required for service requests.
-
-     #### Request Headers
-
-     `Authorization: Bearer {access_token}`
-
-     #### Request Body
-
-     None.
