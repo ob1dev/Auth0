@@ -30,7 +30,7 @@ Please share the code on GitHub and make sure the README file is clean and clear
 
 ## Application flow diagram
 
-![](Schema.png) 
+![](img/Schema.png) 
 
 ## Getting started
 
