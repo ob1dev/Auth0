@@ -95,22 +95,32 @@ Please share the code on GitHub and make sure the README file is clean and clear
 
 7. The WebAPI provides the following endpoints where each requres a specific scope to be executed:
 
-   - The **List Repositories** operation returns a list of the repositories currently in a database. The scope `read:repositories` is required for service requests.
+   - The **List Repositories** operation returns a list of the repositories currently in a database. 
 
      `GET https://{base-url}/api/repositories`
   
-   - The **Get Repository** operation gets a repository from a database. The scope `read:repositories` is required for service requests.
+     > The scope `read:repositories` is required for service requests.
+
+   - The **Get Repository** operation gets a repository from a database.
    
      `GET https://{base-url}/api/repositories/{repository-guid}`
 
-   - The **Create Repository** operation creates a new repository in a database. The scope `create:repositories` is required for service requests.
+     > The scope `read:repositories` is required for service requests.
+
+   - The **Create Repository** operation creates a new repository in a database.
    
      `POST https://{base-url}/api/repositories`
 
-   - The **Update Repository** operation updates an existent repository to the new one. The scope `update:repositories` is required for service requests.
+     > The scope `create:repositories` is required for service requests.
+
+   - The **Update Repository** operation updates an existent repository to the new one.
    
      `PUT https://{base-url}/api/repositories/{repository-guid}`
+
+     > The scope `update:repositories` is required for service requests.
      
-   - The **Delete Repository** operation removes an repository from database. The scope `delete:repositories` is required for service requests.
+   - The **Delete Repository** operation removes an repository from database.
    
      `DELETE https://{base-url}/api/repositories/{repository-guid}`
+
+     >  The scope `delete:repositories` is required for service requests.
