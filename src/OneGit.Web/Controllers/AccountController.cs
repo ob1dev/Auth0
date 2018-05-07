@@ -46,7 +46,7 @@ namespace OneGit.Web.Controllers
         ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value,
         IdToken = await HttpContext.GetTokenAsync("id_token"),
         AccessToken = await HttpContext.GetTokenAsync("access_token")
-    });
+      });
     }
 
     public IActionResult AccessDenied()
