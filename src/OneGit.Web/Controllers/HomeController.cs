@@ -1,6 +1,4 @@
-﻿using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OneGit.Web.Models;
 using OneGit.Web.Services;
@@ -15,12 +13,9 @@ namespace OneGit.Web.Controllers
   {
     private RepositoryClient repositoryClient;
 
-    private TelemetryClient telemetry;
-
-    public HomeController(RepositoryClient client, TelemetryClient telemetry)
+    public HomeController(RepositoryClient client)
     {
       this.repositoryClient = client;
-      this.telemetry = telemetry;
     }
 
     public async Task<IActionResult> Index()
@@ -29,8 +24,6 @@ namespace OneGit.Web.Controllers
 
       if (User.Identity.IsAuthenticated)
       {
-        this.telemetry.TrackEvent(new EventTelemetry("Listing Repository"));
-
         repositories = await this.repositoryClient.GetAllRepositoriesAsync();
       }
 
@@ -52,8 +45,6 @@ namespace OneGit.Web.Controllers
       {
         return View();
       }
-
-      this.telemetry.TrackEvent(new EventTelemetry("Creating New Repository"));
 
       await this.repositoryClient.CreateNewRepositoryAsync(repository);
 
@@ -83,8 +74,6 @@ namespace OneGit.Web.Controllers
         return View();
       }
 
-      this.telemetry.TrackEvent(new EventTelemetry("Updating Repository"));
-
       await this.repositoryClient.UpdateRepositoryAsync(repository);
 
       return RedirectToAction("Index");
@@ -93,8 +82,6 @@ namespace OneGit.Web.Controllers
     [Authorize(Roles = "admin")]
     public async Task<IActionResult> Delete(Guid id)
     {
-      this.telemetry.TrackEvent(new EventTelemetry("Deleting Repository"));
-
       await this.repositoryClient.DeleteRepositoryAsync(id);
 
       return RedirectToAction("Index");

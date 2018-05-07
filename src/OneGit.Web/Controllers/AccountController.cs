@@ -1,6 +1,4 @@
-﻿using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,13 +11,6 @@ namespace OneGit.Web.Controllers
   [Route("[controller]/[action]")]
   public class AccountController : Controller
   {
-    private TelemetryClient telemetry;
-
-    public AccountController(TelemetryClient telemetry)
-    {
-      this.telemetry = telemetry;
-    }
-
     [HttpGet]
     public async Task Signin(string returnUrl = "/")
     {
@@ -27,8 +18,6 @@ namespace OneGit.Web.Controllers
         {
           RedirectUri = returnUrl
         });
-
-      this.telemetry.TrackEvent(new EventTelemetry("Signing in User"));
     }
 
     [HttpGet]
@@ -44,8 +33,6 @@ namespace OneGit.Web.Controllers
         });
 
       await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-      this.telemetry.TrackEvent(new EventTelemetry("Signing out User"));
     }
 
     [HttpGet]
