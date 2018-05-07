@@ -66,7 +66,7 @@ namespace OneGit.Web
         options.TokenValidationParameters = new TokenValidationParameters
         {
           NameClaimType = "nickname",
-          RoleClaimType = "https://schemas.quickstarts.com/roles"
+          RoleClaimType = "https://olegburov.com/roles"
         };
 
         // Set the callback path, so Auth0 will call back to http://localhost:5000/signin-auth0 
