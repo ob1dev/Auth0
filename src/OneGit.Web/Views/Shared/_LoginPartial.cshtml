@@ -8,7 +8,7 @@
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
       <a class="dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">
-        <img width="20" height="20" class="avatar" alt="@User.Identity.Name<" src="@User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value">
+        <img width="20" height="20" class="avatar" alt="@User.Identity.Name" src="@User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value">
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
