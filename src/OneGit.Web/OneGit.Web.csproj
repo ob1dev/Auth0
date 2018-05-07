@@ -1,16 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>fc544d68-3a59-46ef-bb96-c511696b3ce3</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/111c4eb0-143a-4542-9d76-3d64ec43a7f9/resourcegroups/Auth0/providers/microsoft.insights/components/OneGit-WebApp</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/111c4eb0-143a-4542-9d76-3d64ec43a7f9/resourcegroups/Auth0/providers/microsoft.insights/components/OneGit-WebApp</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0-preview2-final" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>
