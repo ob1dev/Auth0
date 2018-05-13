@@ -10,6 +10,7 @@ using OneGit.Api.Authorization;
 using OneGit.Api.Data;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -75,6 +76,20 @@ namespace OneGit.Api
             Name = "MIT",
             Url = "https://github.com/olegburov/Auth0/blob/master/LICENSE"
           }
+        });
+
+        c.AddSecurityDefinition("JWT Bearer", new ApiKeyScheme
+        {
+          Description = @"Auth0 Access Token in the header 'Authorization' of HTTP request as a Bearer token. 
+                          <p>Example: 'Authorization: Bearer {Your-Auth0-access_token-here}'</p>",
+          Name = "Authorization",
+          In = "header",
+          Type = "apiKey"
+        });
+
+        c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+        {
+          {"JWT Bearer", new string[] { }},
         });
 
         // Set the comments path for the Swagger JSON and UI.
