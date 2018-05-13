@@ -29,6 +29,7 @@ namespace OneGit.Api
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
       // 1. Add Authentication Services
+      string domain = $"https://{this.Configuration["Auth0:Domain"]}/";
       services.AddAuthentication(options =>
       {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -36,7 +37,7 @@ namespace OneGit.Api
       })
       .AddJwtBearer(options =>
       {
-        options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
+        options.Authority = domain;
         options.Audience = this.Configuration["Auth0:ApiIdentifier"];
       });
 
@@ -64,7 +65,6 @@ namespace OneGit.Api
         app.UseHsts();
       }
 
-      // 2. Enable authentication middleware
       app.UseAuthentication();
 
       app.UseHttpsRedirection();
