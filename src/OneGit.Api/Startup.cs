@@ -15,7 +15,7 @@ namespace OneGit.Api
   {
     public Startup(IConfiguration configuration)
     {
-      Configuration = configuration;
+      this.Configuration = configuration;
     }
 
     public IConfiguration Configuration { get; }
@@ -24,7 +24,7 @@ namespace OneGit.Api
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<RepositoryContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -37,7 +37,7 @@ namespace OneGit.Api
       .AddJwtBearer(options =>
       {
         options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
-        options.Audience = Configuration["Auth0:ApiIdentifier"];
+        options.Audience = this.Configuration["Auth0:ApiIdentifier"];
       });
 
       services.AddAuthorization(options =>

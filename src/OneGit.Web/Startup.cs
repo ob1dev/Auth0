@@ -18,7 +18,7 @@ namespace OneGit.Web
   {
     public Startup(IConfiguration configuration)
     {
-      Configuration = configuration;
+      this.Configuration = configuration;
     }
 
     public IConfiguration Configuration { get; }
@@ -44,11 +44,11 @@ namespace OneGit.Web
       .AddOpenIdConnect("Auth0", options =>
       {
         // Set the authority to your Auth0 domain
-        options.Authority = $"https://{Configuration["Auth0:Domain"]}";
+        options.Authority = $"https://{this.Configuration["Auth0:Domain"]}";
 
         // Configure the Auth0 Client ID and Client Secret
-        options.ClientId = Configuration["Auth0:ClientId"];
-        options.ClientSecret = Configuration["Auth0:ClientSecret"];
+        options.ClientId = this.Configuration["Auth0:ClientId"];
+        options.ClientSecret = this.Configuration["Auth0:ClientSecret"];
 
         // Set response type to code
         options.ResponseType = "code";
@@ -59,7 +59,7 @@ namespace OneGit.Web
         options.Scope.Add("profile");
         options.Scope.Add("email");
 
-        var apiScopes = string.Join(" ", Configuration.GetSection("Auth0:ApiScopes").GetChildren().Select(s => s.Value));
+        var apiScopes = string.Join(" ", this.Configuration.GetSection("Auth0:ApiScopes").GetChildren().Select(s => s.Value));
         options.Scope.Add(apiScopes);
 
         // Set the correct name claim type
@@ -84,7 +84,7 @@ namespace OneGit.Web
           // handle the logout redirection 
           OnRedirectToIdentityProviderForSignOut = (context) =>
             {
-              var logoutUri = $"https://{Configuration["Auth0:Domain"]}/v2/logout?client_id={Configuration["Auth0:ClientId"]}";
+              var logoutUri = $"https://{this.Configuration["Auth0:Domain"]}/v2/logout?client_id={this.Configuration["Auth0:ClientId"]}";
 
               var postLogoutUri = context.Properties.RedirectUri;
               if (!string.IsNullOrEmpty(postLogoutUri))
@@ -107,7 +107,7 @@ namespace OneGit.Web
 
           OnRedirectToIdentityProvider = context =>
           {
-            context.ProtocolMessage.SetParameter("audience", Configuration["Auth0:ApiIdentifier"]);
+            context.ProtocolMessage.SetParameter("audience", this.Configuration["Auth0:ApiIdentifier"]);
 
             return Task.FromResult(0);
           }
@@ -119,7 +119,7 @@ namespace OneGit.Web
 
       services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-      services.AddHttpClient<RepositoryClient>(client => client.BaseAddress = new Uri(Configuration["Auth0:ApiBaseUrl"]));
+      services.AddHttpClient<RepositoryClient>(client => client.BaseAddress = new Uri(this.Configuration["Auth0:ApiBaseUrl"]));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
