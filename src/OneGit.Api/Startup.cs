@@ -29,15 +29,14 @@ namespace OneGit.Api
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
       // 1. Add Authentication Services
-      string domain = $"https://{Configuration["Auth0:Domain"]}/";
       services.AddAuthentication(options =>
       {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-      }).AddJwtBearer(options =>
+      })
+      .AddJwtBearer(options =>
       {
-        options.Authority = domain;
+        options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
         options.Audience = Configuration["Auth0:ApiIdentifier"];
       });
 
