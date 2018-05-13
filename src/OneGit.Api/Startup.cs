@@ -8,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OneGit.Api.Authorization;
 using OneGit.Api.Data;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace OneGit.Api
 {
@@ -51,6 +55,33 @@ namespace OneGit.Api
 
       // register the scope authorization handler
       services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+
+      services.AddSwaggerGen(c =>
+      {
+        c.SwaggerDoc("v1", new Info
+        {
+          Version = "v1",
+          Title = "Repositories API",
+          Description = "A simple example ASP.NET Core Web API",
+          TermsOfService = "None",
+          Contact = new Contact
+          {
+            Name = "Oleg Burov",
+            Email = "oleg.burov@outlook.com",
+            Url = "https://twitter.com/oleg_burov"
+          },
+          License = new License
+          {
+            Name = "MIT",
+            Url = "https://github.com/olegburov/Auth0/blob/master/LICENSE"
+          }
+        });
+
+        // Set the comments path for the Swagger JSON and UI.
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        c.IncludeXmlComments(xmlPath);
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +97,13 @@ namespace OneGit.Api
       }
 
       app.UseAuthentication();
+
+      app.UseSwagger();
+      app.UseSwaggerUI(c =>
+      {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Repositories API V1");
+        c.RoutePrefix = string.Empty;
+      });
 
       app.UseHttpsRedirection();
       app.UseMvc();
