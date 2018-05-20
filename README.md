@@ -38,45 +38,45 @@ Please share the code on GitHub and make sure the README file is clean and clear
 
 2. Log in using one of the following predefined users:
 
-   - User with the access right `Read Data`:
+   - User with the access right `Read Data`.
 
      * Login: `viewer@olegburov.com`
      * Password: `Viewer2User`
    
-   - User with the access right `Write Data`:
+   - User with the access right `Write Data`.
 
      * Login: `editor@olegburov.com`
      * Password: `Editor2User`
 
-   - User with the access right `Delete Data`:
+   - User with the access right `Delete Data`.
  
      * Login: `admin@olegburov.com`
      * Password: `Admin2User`
 
-3. Depending on a user's access right, a security role is assigned with the following scope(s) for calling back-end Web API:
+3. Depending on a user's access right, a security role is assigned with the following scope(s) for calling back-end Web API.
 
-   - The access right `Read Data`:
+   - The access right `Read Data`
 
       * Role: `reader`
       * Scope: `read:repositories`
 
-   - The access right `Write Data`:
+   - The access right `Write Data`
 
       * Role: `editor`
       * Scope: `create:repositories`, `read:repositories` and `update:repositories`
    
-   - The access right `Delete Data`:
+   - The access right `Delete Data`
      
       * Role: `admin`
       * Scope: `create:repositories`, `read:repositories`, `update:repositories` and `delete:repositories`
 
 4. Based on a user's role, the front-end WebApp provides differente actions for a user:
 
-   - The role `reader`:
+   - The role `reader`
 
       * View existent repositories
    
-   - The role `editor`:
+   - The role `editor`
    
       * View existent repositories 
       * Create new repositories
