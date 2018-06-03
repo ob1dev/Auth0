@@ -48,10 +48,10 @@ namespace OneGit.Api
 
       services.AddAuthorization(options =>
       {
-        options.AddPolicy("read:repositories", policy => policy.Requirements.Add(new HasScopeRequirement("read:repositories", domain)));
-        options.AddPolicy("create:repositories", policy => policy.Requirements.Add(new HasScopeRequirement("create:repositories", domain)));
-        options.AddPolicy("update:repositories", policy => policy.Requirements.Add(new HasScopeRequirement("update:repositories", domain)));
-        options.AddPolicy("delete:repositories", policy => policy.Requirements.Add(new HasScopeRequirement("delete:repositories", domain)));
+        options.AddPolicy("read:repositories", policy => policy.Requirements.Add(new HasScopeRequirement(domain, "read:repositories")));
+        options.AddPolicy("create:repositories", policy => policy.Requirements.Add(new HasScopeRequirement(domain, "create:repositories")));
+        options.AddPolicy("update:repositories", policy => policy.Requirements.Add(new HasScopeRequirement(domain, "update:repositories")));
+        options.AddPolicy("delete:repositories", policy => policy.Requirements.Add(new HasScopeRequirement(domain, "delete:repositories")));
       });
 
       // register the scope authorization handler
