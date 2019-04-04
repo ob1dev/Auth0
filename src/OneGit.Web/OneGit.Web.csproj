@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>fc544d68-3a59-46ef-bb96-c511696b3ce3</UserSecretsId>
     <DockerTargetOS>Linux</DockerTargetOS>
   </PropertyGroup>
