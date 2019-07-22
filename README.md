@@ -1,6 +1,6 @@
 # Auth0 Coding Project
 
-[![Build Status](https://travis-ci.org/olegburov/Auth0.svg?branch=master)](https://travis-ci.org/olegburov/Auth0)
+[![Build Status](https://dev.azure.com/olegburov/Auth0/_apis/build/status/olegburov.Auth0?branchName=master)](https://dev.azure.com/olegburov/Auth0/_build/latest?definitionId=10&branchName=master)
 
 ## Problem Overview
 
