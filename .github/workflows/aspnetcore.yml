@@ -13,6 +13,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         version: 2.2.108
-    - name: Build
+    - name: Show me path
       run: pwd
+    - name: Build
       run: dotnet build ./**/*.csproj --configuration Release
