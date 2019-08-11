@@ -16,4 +16,4 @@ jobs:
     - name: Show me path
       run: pwd
     - name: Build
-      run: dotnet build ./**/*.csproj --configuration Release
+      run: dotnet build /src/Auth0.sln --configuration Release
