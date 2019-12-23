@@ -1,5 +1,9 @@
 # Auth0 Coding Project
 
+<p align="left">
+  <a href="https://github.com/olegburov/Auth0"><img alt="GitHub Actions status" src="https://github.com/olegburov/Auth0/workflows/ASP.NET%20Core%20CI/badge.svg"></a>
+</p>
+
 [![Build Status](https://dev.azure.com/olegburov/Auth0/_apis/build/status/olegburov.Auth0?branchName=master)](https://dev.azure.com/olegburov/Auth0/_build/latest?definitionId=10&branchName=master)
 
 ## Problem Overview
